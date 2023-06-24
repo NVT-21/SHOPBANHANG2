@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const connectDB = require('./controllers/connect');
-const port = process.env.PORT ||8000;
+const port = 3000;
 const session = require('express-session');
 const controllerError = require('./controllers/controllerErrors')
 const routes=require('./router/index');
