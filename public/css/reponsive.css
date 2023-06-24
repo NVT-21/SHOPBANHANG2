@@ -1,0 +1,71 @@
+@media screen and (max-width: 62.5em) {
+    #container{
+        margin: 10px 20px;
+        /* flex-direction: column-reverse; */
+    }
+
+    /* #header {
+        display: none;
+    }
+
+    #footer{
+        display: none;
+    } */
+
+    .col-4{
+        width: 100%;
+        float: none;
+    }
+
+    .col-8{
+        width: 100%;
+        position: relative;
+    }
+
+    .col-8-4{
+        width: 49%;
+    }
+    .nav-btn{
+        display: block;
+    }
+    .pc {
+        display: none;
+    }
+
+    .select-color .col-4-3{
+        width: 100%;
+    }
+
+    .form-paycheck {
+        position: absolute;
+        bottom: -108px;
+        width: 100%;
+    }
+
+    .col-8-3 {
+        width: 32.5%;
+    }
+
+    .tab-desription{
+        margin-top: 25px;
+    }
+
+    .show-btn, .hide-btn {
+        font-size: 13px ;
+        padding: 7px ;
+    }
+
+    .sale-price {
+        font-size: 26px;
+        font-weight: 550;
+    }
+
+    .space-between-pc {
+        margin: 0%;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .mobile {
+        display: none;
+    }
+}

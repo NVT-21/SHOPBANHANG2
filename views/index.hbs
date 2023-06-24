@@ -1,0 +1,124 @@
+
+<body>
+    <div class="app">
+       
+        <div class="app__container">
+            <div class="grip">
+                <div class=" grip_row  app_content">
+                    <div class="col-2 container-content">
+                        <h3 class="category">Danh Mục</h3>
+                        <ul class="menu">
+                          <a href="/?type=cloth"class="Catalog-menu"style="color: black; text-decoration: none;"><li class="menu-element">Quần áo </li></a>  
+                            <a href="/?type=shoe"class="Catalog-menu"style="color: black; text-decoration: none;"><li class="menu-element">Giày </li></a>
+                            <a href="/?type=Belongings"class="Catalog-menu"style="color: black; text-decoration: none;"><li class="menu-element">Đồ dùng </li></a>
+
+                            
+
+
+                        </ul>
+                    </div>
+                    <div class="col-10">
+
+                       <div class="header-col-10">
+                        
+
+                            <div class="list-function">
+    
+                                <p class="functon-col-10">Sắp xếp theo</p>
+                                <p class="functon-col-10">Phổ biến </p>
+                                <p class="functon-col-10 special-color ">Mới nhất </p>
+                                <p class="functon-col-10">Bán chạy</p>
+                                <p class="functon-col-10 button-price button-hover">Giá
+                                    <i class="fa-solid fa-arrow-down"></i>
+                                    <ul class="list-price">
+                                        <li class="price-element">Giá:Thấp đến cao</li>
+                                        <li class="price-element">Giá:Cao đến thấp</li>
+                                    </ul>
+                                </p>
+    
+                                
+                            </div>
+                           <div class="function-page">
+                            <p class="page-curr">
+                                <span>{{limit pageCurrent sumPage}}</span> / {{sumPage}}
+                            </p>
+                        <a class="pre-page" href="/?page={{limit (subtract pageCurrent 1) sumPage}}">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                        <a class="next-page" href="/?page={{limit (add pageCurrent 1) sumPage}}">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+
+                            </div>
+
+                        </div>
+                        <div class="container-products">
+                            <div class=" grip_row-2  app_content">
+                        {{#each productsList}}  
+                        <div class="col-10-5 container-product">
+                            
+                            <a href="" class="display-produce">
+                             <div class="produce-img" style="background-image:url(/img/{{this.photo}});"></div>
+                             <h3 class="introduce-produce">{{this.name}} </h3>
+                            <div class="list-price-produce">
+                            <p class="price-origin">{{this.price}}VND</p>
+                            <p class="price-sale">{{this.priceSale}}VND</p>
+                            </div>
+                            <div class="like-produce">
+                            <p >Số lượng đã bán</p>
+                            <p class="figure-sale">{{this.sold}}</p>
+                            </div>
+                            <div class="origin">
+                            <p class="status">Xuất Xứ</p>
+                            <p class="country">{{this.origin}}</p>
+                            </div>
+                            <a href="/detailProduct/{{this._id}}" class="add-to-cart-button"> Mua Hàng</a>
+                            </a>
+                            
+                         </div>
+                            {{/each}}
+
+                             
+                            
+                               
+                            
+
+                                  
+                            </div>
+
+                               
+                               
+                            
+                          
+                               
+                               
+                            
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                       </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <footer class="footer">
+
+        </footer>
+        <!-- xem lai nhung lam the nao hover khong anh huong den the con
+            xem lai lam phan tim kiem 
+            xem lam the nao de lam boder ngan lai 
+        -->
+    </div>
+    <script>
+       
+</script>
+    
+</body>
+</html>

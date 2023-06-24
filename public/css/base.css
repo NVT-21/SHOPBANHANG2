@@ -1,0 +1,62 @@
+:roof {
+    --while-color:#fff;
+    --black-color:#000;
+    --text-color:#333;
+    
+}
+
+.special-color{
+    background-color: rgb(238,77,45);
+    color: #fff;
+}
+*{
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.grip{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto ;
+}
+.grip_full-width{
+    width: 100%;
+}
+.grip_row{
+    display: flex;
+    
+    padding-left: -12px;
+    padding-right: -12px;
+}
+.grip_row-2{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: -12px;
+    padding-right: -12px;
+}
+
+.col-2{
+    width: 16.66667%;
+    margin-left: 12px;
+    margin-right: 12px;
+
+}
+.col-10{
+    width: 83.33333%;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.col-10-5{
+    width: 20%;
+    
+    margin-left: 12px;
+    margin-right: 12px;
+
+}
