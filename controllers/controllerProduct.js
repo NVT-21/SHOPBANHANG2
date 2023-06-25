@@ -150,59 +150,53 @@ class controllerProduct{
         next()
 
       })
-      paymentProduct=asyncError(async(req, res, next)=>{
+      paymentProduct = asyncError(async (req, res, next) => {
         paypal.configure({
           mode: 'sandbox', // 'sandbox' or 'live' depending on your environment
           client_id: 'AYz9rewmeo5k14MHl8Sl-hllNLxR2IrvYDjjxr5-0QIlOYvuSfJ9amfaJ4hJ8qRuPMbCXfKC4Luv4gqm',
           client_secret: 'EDUv4c3MdPCyMLxdLcgTDSgx1rQ4NIRvhXjjhVZomgqPvYZdOmW3XzVLIzr0LlPA1-QjJ_g2k22KdUyu',
         });
-        var cart=req.session.cart;
-        // console.log(cart);
+      
+        const cart = req.session.cart;
         const items = [];
+        let totalPrice = 0;
+      
         for (const item of cart) {
           const { product, quantity, price } = item;
           const itemData = {
-            
-            name:product.name,
+            name: product.name,
             quantity,
-            price,
-            sku:product._id,
-            currency:"USD"
-
-            
+            price:product.priceSale,
+            sku: product._id,
+            currency: 'USD'
           };
-  items.push(itemData);
-}
- 
-  var totalPrice = 0;
-  for (const item of cart) {
-    totalPrice += item.price;
-  }
-
-
+          items.push(itemData);
+          totalPrice += price;
+        }
+        
         const paymentRequest = {
           intent: 'sale',
           payer: {
-            payment_method: 'paypal',
+            payment_method: 'paypal'
           },
-         
           redirect_urls: {
             return_url: 'http://127.0.0.1:3000/product/success',
-            cancel_url: 'http://127.0.0.1:3000/cancel',
+            cancel_url: 'http://127.0.0.1:3000/cancel'
           },
           transactions: [
             {
               amount: {
-                total: totalPrice, // Total amount for the payment
-                currency: 'USD', // Currency code (e.g., USD, EUR)
+                total: totalPrice,
+                currency: 'USD'
               },
               description: 'Payment description',
               item_list: {
                 items
               }
-              } ],
             }
-        
+          ]
+        };
+      
         paypal.payment.create(paymentRequest, (error, payment) => {
           if (error) {
             console.error(error);
@@ -212,7 +206,8 @@ class controllerProduct{
             res.redirect(payment.links.find(link => link.rel === 'approval_url').href);
           }
         });
-      })
+      });
+      
       paymentSucces=asyncError(async(req, res, next)=>{
         const paymentId = req.query.paymentId;
         const payerId = req.query.PayerID;
@@ -224,7 +219,7 @@ class controllerProduct{
         paypal.payment.execute(paymentId, executePayment, (error, payment) => {
           if (error) {
             console.error(error);
-            res.redirect('/cancel'); // Redirect to a cancel page or handle the error accordingly
+            res.send('/Lôi không thanh toán được '); // Redirect to a cancel page or handle the error accordingly
           } else {
             
             var purchasedProducts = [];
@@ -252,7 +247,7 @@ class controllerProduct{
                   { $inc: { sold: quantitySold } }, // Tăng số lượng đã bán theo số lượng mua
                   { new: true } // Trả về sản phẩm sau khi cập nhật
                 );
-                
+               
               } catch (error) {
                 console.error('Lỗi cập nhật sản phẩm:', error);
               }
